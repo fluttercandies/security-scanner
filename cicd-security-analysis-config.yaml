@@ -16,7 +16,7 @@ repositories:
     options: ""
 
   - name: fluttercandies/.github
-    enabled: true
+    enabled: false
     options: ""
 
   - name: fluttercandies/flutter_photo_manager
