@@ -1,0 +1,131 @@
+name: CI/CD Security Analysis
+
+on:
+  schedule:
+    - cron: '0 2 * * 3'
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["**"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+env:
+  ZIZMOR_VERSION: "1.29.0"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.parse-config.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      
+      - name: Pre-cache zizmor
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        id: pre-cache-zizmor
+        with:
+          path: ~/.cargo/bin/zizmor
+          key: ${{ runner.os }}-zizmor-v${{ env.ZIZMOR_VERSION }}
+
+      - name: Pre-install zizmor (if cache miss)
+        if: steps.pre-cache-zizmor.outputs.cache-hit != 'true'
+        run: cargo install zizmor --version "$ZIZMOR_VERSION" --locked
+        env:
+          ZIZMOR_VERSION: ${{ env.ZIZMOR_VERSION }}
+
+      - name: Parse CI/CD security config
+        id: parse-config
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #v9.0.0
+        with:
+          script: |
+            await exec.exec('npm', ['install', 'js-yaml@5.2.3']);
+            const yaml = require('js-yaml');
+            const fs = require('fs');
+
+            const fileContents = fs.readFileSync('cicd-security-analysis-config.yaml', 'utf8');
+            const config = yaml.load(fileContents);
+
+            const defaultOptions = config.default_options || '';
+
+            const repos = (config.repositories || [])
+              .filter(repo => repo.enabled !== false)
+              .map(repo => {
+                const repoOptions = (repo.options && repo.options.trim()) ? repo.options.trim() : '';
+                const combinedOptions = [defaultOptions, repoOptions].filter(s => s.length > 0).join(' ');
+                return {
+                  name: repo.name,
+                  options: combinedOptions
+                };
+              });
+
+            core.setOutput('matrix', JSON.stringify(repos));
+
+  scan:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ${{ fromJSON(needs.setup.outputs.matrix) }}
+      fail-fast: false
+    name: "Scan :: ${{ matrix.repo.name }}"
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout: |
+            cicd-security-analysis-zizmor-config.yaml
+      - name: "Checkout :: ${{ matrix.repo.name }}"
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          repository: ${{ matrix.repo.name }}
+          path: target-repo
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/workflows
+            action.yml
+
+      - name: Restore zizmor cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        id: restore-zizmor
+        with:
+          path: ~/.cargo/bin/zizmor
+          key: ${{ runner.os }}-zizmor-v${{ env.ZIZMOR_VERSION }}
+
+      - name: "Scan :: ${{ matrix.repo.name }}"
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+        env:
+          # uses: zizmor online mode
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OPTIONS: ${{ matrix.repo.options }}
+          ZIZMOR_CONFIG: "../cicd-security-analysis-zizmor-config.yaml"
+        with:
+          script: |
+            const options = (process.env.REPO_OPTIONS || '').trim();
+            let args = [];
+            if (options) {
+              args = options.split(/\s+/).filter(s => s.length > 0);
+            }
+            args.push('.');
+
+            console.log(`Running: zizmor ${args.join(' ')}`);
+
+            const exitCode = await exec.exec('zizmor', args, {
+              cwd: 'target-repo',
+              env: process.env,
+              stdio: 'inherit'
+            });
+
+            if (exitCode !== 0) {
+              throw new Error(`zizmor exited with code ${exitCode}`);
+            }
