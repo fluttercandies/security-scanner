@@ -4,10 +4,11 @@ on:
   schedule:
     - cron: '0 2 * * 3'
   workflow_dispatch:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["**"]
+    inputs:
+      target_repo:
+        description: 'Repository to scan (full name, e.g., owner/repo). Leave empty to scan all.'
+        required: false
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -44,6 +45,8 @@ jobs:
       - name: Parse CI/CD security config
         id: parse-config
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #v9.0.0
+        env:
+          TARGET_REPO: ${{ github.event.inputs.target_repo || '' }}
         with:
           script: |
             await exec.exec('npm', ['install', 'js-yaml@5.2.3']);
@@ -54,9 +57,14 @@ jobs:
             const config = yaml.load(fileContents);
 
             const defaultOptions = config.default_options || '';
+            const targetRepo = process.env.TARGET_REPO?.trim() || '';
 
             const repos = (config.repositories || [])
               .filter(repo => repo.enabled !== false)
+              .filter(repo => {
+                if (!targetRepo) return true;
+                return repo.name === targetRepo;
+              })
               .map(repo => {
                 const repoOptions = (repo.options && repo.options.trim()) ? repo.options.trim() : '';
                 const combinedOptions = [defaultOptions, repoOptions].filter(s => s.length > 0).join(' ');
