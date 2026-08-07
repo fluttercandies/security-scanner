@@ -3,7 +3,7 @@ import * as github from '@actions/github'
 import * as fs from 'fs'
 
 /**
- * Notifies about CI/CD security scan results 
+ * Notifies about CI/CD security scan results
  * by creating, updating, or closing GitHub Issues
  *
  * Environment variables (inputs):
@@ -38,13 +38,16 @@ async function run() {
     const octokit = github.getOctokit(token)
     const { owner, repo } = github.context.repo
 
-    const issueTitle = `[CI/CD Security] Issues found in ${repoName}`
+    const issueMarker = `<!-- security-issue-marker: ${repoName} -->`
+    const issueTitle = `[CI/CD Security] Issues found in \`${repoName}\``
     const issueBody = `
 ## Issues detected in \`${repoName}\`
 
 \`\`\`
 ${outputBody}
 \`\`\`
+
+${issueMarker}
 `.trim()
 
     const allIssues = await octokit.paginate(octokit.rest.issues.listForRepo, {
@@ -55,7 +58,7 @@ ${outputBody}
     })
 
     const existingOpenIssue = allIssues.find(
-      (issue) => issue.title === issueTitle && !issue.pull_request
+      (issue) => !issue.pull_request && issue.body?.includes(issueMarker)
     )
     const isFailure = exitCode !== 0
 
