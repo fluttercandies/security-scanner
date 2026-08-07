@@ -39,7 +39,7 @@ async function run() {
     const { owner, repo } = github.context.repo
 
     const issueMarker = `<!-- security-issue-marker: ${repoName} -->`
-    const issueTitle = `[CI/CD Security] Issues found in \`${repoName}\``
+    const issueTitle = `[CI/CD Security] ${repoName} - Issue Report`
     const issueBody = `
 ## Issues detected in \`${repoName}\`
 
@@ -69,6 +69,7 @@ ${issueMarker}
           owner,
           repo,
           issue_number: existingOpenIssue.number,
+          title: issueTitle,
           body: issueBody,
         })
         core.info(`✅ Updated open issue #${existingOpenIssue.number} with new scan results`)
