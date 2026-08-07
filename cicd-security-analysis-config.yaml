@@ -1,6 +1,6 @@
 # .github/workflows/cicd-security-analysis.yaml
 
-default_options: "--persona=pedantic"
+default_options: "--persona=pedantic --format=plain --color=never"
 
 repositories:
   - name: fluttercandies/flutter_tilt
