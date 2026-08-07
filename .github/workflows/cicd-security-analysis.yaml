@@ -18,6 +18,7 @@ permissions: {}
 
 env:
   ZIZMOR_VERSION: "1.29.0"
+  NODE_VERSION: "24"
 
 jobs:
   setup:
@@ -42,39 +43,20 @@ jobs:
         env:
           ZIZMOR_VERSION: ${{ env.ZIZMOR_VERSION }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 #v7.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Parse CI/CD security config
         id: parse-config
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #v9.0.0
+        run: npx tsx scripts/parse-config.ts
         env:
           TARGET_REPO: ${{ github.event.inputs.target_repo || '' }}
-        with:
-          script: |
-            await exec.exec('npm', ['install', 'js-yaml@5.2.3']);
-            const yaml = require('js-yaml');
-            const fs = require('fs');
-
-            const fileContents = fs.readFileSync('cicd-security-analysis-config.yaml', 'utf8');
-            const config = yaml.load(fileContents);
-
-            const defaultOptions = config.default_options || '';
-            const targetRepo = process.env.TARGET_REPO?.trim() || '';
-
-            const repos = (config.repositories || [])
-              .filter(repo => repo.enabled !== false)
-              .filter(repo => {
-                if (!targetRepo) return true;
-                return repo.name === targetRepo;
-              })
-              .map(repo => {
-                const repoOptions = (repo.options && repo.options.trim()) ? repo.options.trim() : '';
-                const combinedOptions = [defaultOptions, repoOptions].filter(s => s.length > 0).join(' ');
-                return {
-                  name: repo.name,
-                  options: combinedOptions
-                };
-              });
-
-            core.setOutput('matrix', JSON.stringify(repos));
 
   scan:
     needs: setup
@@ -111,30 +93,19 @@ jobs:
           path: ~/.cargo/bin/zizmor
           key: ${{ runner.os }}-zizmor-v${{ env.ZIZMOR_VERSION }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 #v7.0.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: "Scan :: ${{ matrix.repo.name }}"
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #v9.0.0
+        run: npx tsx scripts/run-zizmor.ts
         env:
           # uses: zizmor online mode
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OPTIONS: ${{ matrix.repo.options }}
           ZIZMOR_CONFIG: "../cicd-security-analysis-zizmor-config.yaml"
-        with:
-          script: |
-            const options = (process.env.REPO_OPTIONS || '').trim();
-            let args = [];
-            if (options) {
-              args = options.split(/\s+/).filter(s => s.length > 0);
-            }
-            args.push('.');
-
-            console.log(`Running: zizmor ${args.join(' ')}`);
-
-            const exitCode = await exec.exec('zizmor', args, {
-              cwd: 'target-repo',
-              env: process.env,
-              stdio: 'inherit'
-            });
-
-            if (exitCode !== 0) {
-              throw new Error(`zizmor exited with code ${exitCode}`);
-            }
