@@ -19,6 +19,9 @@ permissions: {}
 jobs:
   scan:
     uses: AmosHuKe/security-scanner/.github/workflows/cicd-security-analysis.yaml@main
+    permissions:
+      contents: read
+      issues: write
     with:
       scan_config: 'cicd-security-analysis-config.yaml'
       zizmor_config: 'cicd-security-analysis-zizmor-config.yaml'
