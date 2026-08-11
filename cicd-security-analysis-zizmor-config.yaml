@@ -6,3 +6,5 @@ rules:
     disable: true
   anonymous-definition:
     disable: true
+  concurrency-limits:
+    disable: true

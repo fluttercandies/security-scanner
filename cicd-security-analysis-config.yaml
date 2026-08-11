@@ -1,41 +1,143 @@
 # .github/workflows/cicd-security-analysis.yaml
 
-default_options: "--persona=pedantic"
+default_options: "--persona=pedantic --color=never"
 
 repositories:
   - name: fluttercandies/security-scanner
     enabled: true
     options: ""
     notify_users: [AmosHuKe]
-
-  - name: fluttercandies/flutter_tilt
-    enabled: true
-    options: ""
-
-  - name: fluttercandies/packages
-    enabled: true
-    options: ""
-
   - name: fluttercandies/.github-workflow
     enabled: true
     options: ""
-
+    notify_users: [AmosHuKe]
   - name: fluttercandies/.github
-    enabled: false
+  - name: fluttercandies/packages
+    enabled: true
     options: ""
-
-  # - name: fluttercandies/flutter_photo_manager
-  #   enabled: true
-  #   options: ""
-
-  # - name: fluttercandies/flutter_wechat_assets_picker
-  #   enabled: true
-  #   options: ""
-  
-  # - name: fluttercandies/extended_image
-  #   enabled: true
-  #   options: ""
-  
-  # - name: fluttercandies/flutter_smart_dialog
-  #   enabled: true
-  #   options: ""
+    notify_users: [AmosHuKe]
+  - name: fluttercandies/flutter_tilt
+    enabled: true
+    options: ""
+    notify_users: [AmosHuKe]
+  - name: fluttercandies/flutter_wechat_assets_picker
+    enabled: true
+    options: ""
+    notify_users: []
+  - name: fluttercandies/flutter_wechat_picker_library
+    enabled: true
+    options: ""
+    notify_users: []
+  - name: fluttercandies/flutter_photo_manager
+    enabled: true
+    options: ""
+    notify_users: []
+  - name: fluttercandies/flutter_photo_manager_plugins
+    enabled: true
+    options: ""
+    notify_users: []
+  - name: fluttercandies/flutter_wechat_camera_picker
+    enabled: true
+    options: ""
+    notify_users: []
+  - name: fluttercandies/extended_image
+  - name: fluttercandies/flutter_smart_dialog
+  - name: fluttercandies/flutter_scrollview_observer
+  - name: fluttercandies/acpd
+  - name: fluttercandies/flutter_hsvcolor_picker
+  - name: fluttercandies/toto
+  - name: fluttercandies/triage_bot_for_flutter_photo_manager
+    enabled: true
+    options: ""
+    notify_users: [AmosHuKe]
+  - name: fluttercandies/ff_annotation_route_library
+  - name: fluttercandies/kache
+  - name: fluttercandies/lon
+  - name: fluttercandies/FlutterJsonBeanFactory
+  - name: fluttercandies/extended_text_field
+  - name: fluttercandies/flutter_image_compress
+  - name: fluttercandies/fjs
+  - name: fluttercandies/pixa
+  - name: fluttercandies/flexbox_layout
+  - name: fluttercandies/aopd
+  - name: fluttercandies/dpad
+  - name: fluttercandies/assets_generator
+  - name: fluttercandies/ff_annotation_route
+  - name: fluttercandies/saver_gallery
+  - name: fluttercandies/JsonToDart
+  - name: fluttercandies/f_limit
+  - name: fluttercandies/wechat_flutter
+  - name: fluttercandies/pool_ai_knowledge
+  - name: fluttercandies/hora
+  - name: fluttercandies/vcard_dart
+  - name: fluttercandies/flutter_drawing_board
+  - name: fluttercandies/waterfall_flow
+  - name: fluttercandies/dotrix
+  - name: fluttercandies/dash_router
+  - name: fluttercandies/libvips_ffi
+  - name: fluttercandies/dart_image_size_getter
+  - name: fluttercandies/svgo
+  - name: fluttercandies/flutter_get_native_icon
+  - name: fluttercandies/file_download_cache_manager
+  - name: fluttercandies/period_date_flutter
+  - name: fluttercandies/ff_annotation_route_core
+  - name: fluttercandies/yapi_api
+  - name: fluttercandies/json_to_dart_library
+  - name: fluttercandies/pull_to_refresh_notification
+  - name: fluttercandies/loading_more_list_library
+  - name: fluttercandies/resx
+  - name: fluttercandies/json_dart
+  - name: fluttercandies/fconsole
+  - name: fluttercandies/flutter_switch_clipper
+  - name: fluttercandies/flutter-interactive-chart
+  - name: fluttercandies/extended_image_library
+  - name: fluttercandies/flutter_packages_get
+  - name: fluttercandies/extended_text
+  - name: fluttercandies/like_button
+  - name: fluttercandies/flutter_novel
+  - name: fluttercandies/extended_tabs
+  - name: fluttercandies/mvimg
+  - name: fluttercandies/loading_more_list
+  - name: fluttercandies/flex_grid
+  - name: fluttercandies/extra_hittest_area
+  - name: fluttercandies/extended_text_library
+  - name: fluttercandies/extended_sliver
+  - name: fluttercandies/extended_nested_scroll_view
+  - name: fluttercandies/extended_list_library
+  - name: fluttercandies/extended_list
+  - name: fluttercandies/extended_keyboard
+  - name: fluttercandies/candies_analyzer_plugin
+  - name: fluttercandies/ff_native_screenshot
+  - name: fluttercandies/flutter_challenges
+  - name: fluttercandies/env2dart
+  - name: fluttercandies/scan_barcode
+  - name: fluttercandies/left-scroll-actions
+  - name: fluttercandies/dart_wake_on_lan
+  - name: fluttercandies/flutter_image_editor
+  - name: fluttercandies/motion_photos
+  - name: fluttercandies/flutter_candies
+  - name: fluttercandies/flutter_bdface_collect
+  - name: fluttercandies/flutter_live_activities
+  - name: fluttercandies/stack_board
+  - name: fluttercandies/sync_scroll_library
+  - name: fluttercandies/properties
+  - name: fluttercandies/no-free-usage-action
+  - name: fluttercandies/nav_router
+  - name: fluttercandies/ios_willpop_transition_theme
+  - name: fluttercandies/http_client_helper
+  - name: fluttercandies/harmony_os_version
+  - name: fluttercandies/flutter_slider_view
+  - name: fluttercandies/flutter_qweather
+  - name: fluttercandies/flutter_learning_tests
+  - name: fluttercandies/flutter_juejin
+  - name: fluttercandies/flutter_clean
+  - name: fluttercandies/flutter_bindings_compatible
+  - name: fluttercandies/flutter_asset_generator
+  - name: fluttercandies/flutter_app_build_tool
+  - name: fluttercandies/flutter_ali_auth
+  - name: fluttercandies/dext
+  - name: fluttercandies/dash_painter
+  - name: fluttercandies/coordtransform
+  - name: fluttercandies/baidupan
+  - name: fluttercandies/adaptation
+  - name: fluttercandies/flutter_interactional_widget
