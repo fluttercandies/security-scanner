@@ -23,23 +23,23 @@ repositories:
   - name: fluttercandies/flutter_wechat_assets_picker
     enabled: true
     options: ""
-    notify_users: []
+    notify_users: [AlexV525]
   - name: fluttercandies/flutter_wechat_picker_library
     enabled: true
     options: ""
-    notify_users: []
+    notify_users: [AlexV525]
   - name: fluttercandies/flutter_photo_manager
     enabled: true
     options: ""
-    notify_users: []
+    notify_users: [AlexV525]
   - name: fluttercandies/flutter_photo_manager_plugins
     enabled: true
     options: ""
-    notify_users: []
+    notify_users: [AlexV525]
   - name: fluttercandies/flutter_wechat_camera_picker
     enabled: true
     options: ""
-    notify_users: []
+    notify_users: [AlexV525]
   - name: fluttercandies/extended_image
   - name: fluttercandies/flutter_smart_dialog
   - name: fluttercandies/flutter_scrollview_observer

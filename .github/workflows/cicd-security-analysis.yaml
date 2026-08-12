@@ -18,7 +18,7 @@ permissions: {}
 
 jobs:
   scan:
-    uses: AmosHuKe/security-scanner/.github/workflows/cicd-security-analysis.yaml@main
+    uses: AmosHuKe/security-scanner/.github/workflows/cicd-security-analysis.yaml@main # zizmor: ignore[unpinned-uses]
     permissions:
       contents: read
       issues: write
