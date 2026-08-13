@@ -50,7 +50,7 @@ repositories:
     notify_users: [iota9star]
 
   - name: fluttercandies/flutter_hsvcolor_picker
-    notify_users: [nohli, AlexV525]
+    notify_users: [AlexV525] # nohli
 
   - name: fluttercandies/toto
     notify_users: [iota9star]
@@ -308,7 +308,7 @@ repositories:
     notify_users: [AlexV525]
 
   - name: fluttercandies/flutter_ali_auth
-    notify_users: [ManInTheWind]
+    # notify_users: [ManInTheWind]
 
   - name: fluttercandies/dext
     notify_users: [CaiJingLong]
