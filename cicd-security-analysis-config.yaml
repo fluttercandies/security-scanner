@@ -7,137 +7,323 @@ repositories:
     enabled: true
     options: ""
     notify_users: [AmosHuKe]
+
   - name: fluttercandies/.github-workflow
-    enabled: true
-    options: ""
     notify_users: [AmosHuKe]
+
   - name: fluttercandies/.github
+
   - name: fluttercandies/packages
-    enabled: true
-    options: ""
     notify_users: [AmosHuKe]
+
   - name: fluttercandies/flutter_tilt
-    enabled: true
-    options: ""
     notify_users: [AmosHuKe]
+
   - name: fluttercandies/flutter_wechat_assets_picker
-    enabled: true
-    options: ""
     notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_wechat_picker_library
-    enabled: true
-    options: ""
     notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_photo_manager
-    enabled: true
-    options: ""
     notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_photo_manager_plugins
-    enabled: true
-    options: ""
     notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_wechat_camera_picker
-    enabled: true
-    options: ""
     notify_users: [AlexV525]
+
   - name: fluttercandies/extended_image
-  - name: fluttercandies/flutter_smart_dialog
-  - name: fluttercandies/flutter_scrollview_observer
-  - name: fluttercandies/acpd
-  - name: fluttercandies/flutter_hsvcolor_picker
-  - name: fluttercandies/toto
-  - name: fluttercandies/triage_bot_for_flutter_photo_manager
-    enabled: true
-    options: ""
-    notify_users: [AmosHuKe]
-  - name: fluttercandies/ff_annotation_route_library
-  - name: fluttercandies/kache
-  - name: fluttercandies/lon
-  - name: fluttercandies/FlutterJsonBeanFactory
-  - name: fluttercandies/extended_text_field
-  - name: fluttercandies/flutter_image_compress
-  - name: fluttercandies/fjs
-  - name: fluttercandies/pixa
-  - name: fluttercandies/flexbox_layout
-  - name: fluttercandies/aopd
-  - name: fluttercandies/dpad
-  - name: fluttercandies/assets_generator
-  - name: fluttercandies/ff_annotation_route
-  - name: fluttercandies/saver_gallery
-  - name: fluttercandies/JsonToDart
-  - name: fluttercandies/f_limit
-  - name: fluttercandies/wechat_flutter
-  - name: fluttercandies/pool_ai_knowledge
-  - name: fluttercandies/hora
-  - name: fluttercandies/vcard_dart
-  - name: fluttercandies/flutter_drawing_board
-  - name: fluttercandies/waterfall_flow
-  - name: fluttercandies/dotrix
-  - name: fluttercandies/dash_router
-  - name: fluttercandies/libvips_ffi
-  - name: fluttercandies/dart_image_size_getter
-  - name: fluttercandies/svgo
-  - name: fluttercandies/flutter_get_native_icon
-  - name: fluttercandies/file_download_cache_manager
-  - name: fluttercandies/period_date_flutter
-  - name: fluttercandies/ff_annotation_route_core
-  - name: fluttercandies/yapi_api
-  - name: fluttercandies/json_to_dart_library
-  - name: fluttercandies/pull_to_refresh_notification
-  - name: fluttercandies/loading_more_list_library
-  - name: fluttercandies/resx
-  - name: fluttercandies/json_dart
-  - name: fluttercandies/fconsole
-  - name: fluttercandies/flutter_switch_clipper
-  - name: fluttercandies/flutter-interactive-chart
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_image_library
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/flutter_smart_dialog
+    notify_users: [xdd666t]
+
+  - name: fluttercandies/flutter_scrollview_observer
+    notify_users: [LinXunFeng]
+
+  - name: fluttercandies/acpd
+    notify_users: [iota9star]
+
+  - name: fluttercandies/flutter_hsvcolor_picker
+    notify_users: [nohli, AlexV525]
+
+  - name: fluttercandies/toto
+    notify_users: [iota9star]
+
+  - name: fluttercandies/triage_bot_for_flutter_photo_manager
+    notify_users: [AmosHuKe]
+  
+  - name: fluttercandies/ff_annotation_route
+    notify_users: [zmtzawqlp, AlexV525]
+
+  - name: fluttercandies/ff_annotation_route_library
+    notify_users: [zmtzawqlp, AlexV525]
+
+  - name: fluttercandies/ff_annotation_route_core
+    notify_users: [zmtzawqlp, AlexV525]
+
+  - name: fluttercandies/kache
+    notify_users: [iota9star]
+
+  - name: fluttercandies/lon
+    notify_users: [iota9star]
+
+  - name: fluttercandies/FlutterJsonBeanFactory
+    notify_users: [zhangruiyu]
+
+  - name: fluttercandies/extended_text_field
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/flutter_image_compress
+    notify_users: [CaiJingLong]
+
+  - name: fluttercandies/fjs
+    notify_users: [iota9star]
+
+  - name: fluttercandies/pixa
+    notify_users: [iota9star]
+
+  - name: fluttercandies/flexbox_layout
+    notify_users: [iota9star]
+
+  - name: fluttercandies/aopd
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/dpad
+    notify_users: [iota9star]
+
+  - name: fluttercandies/assets_generator
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/saver_gallery
+    notify_users: [zhangruiyu]
+
+  - name: fluttercandies/JsonToDart
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/json_to_dart_library
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/f_limit
+    notify_users: [iota9star]
+
+  - name: fluttercandies/wechat_flutter
+    notify_users: [ahyangnb]
+
+  - name: fluttercandies/pool_ai_knowledge
+    notify_users: [ahyangnb]
+
+  - name: fluttercandies/hora
+    notify_users: [iota9star]
+
+  - name: fluttercandies/vcard_dart
+    notify_users: [iota9star]
+
+  - name: fluttercandies/flutter_drawing_board
+    notify_users: [xSILENCEx]
+
+  - name: fluttercandies/waterfall_flow
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/dotrix
+    notify_users: [iota9star]
+
+  - name: fluttercandies/dash_router
+    notify_users: [iota9star]
+
+  - name: fluttercandies/libvips_ffi
+    notify_users: [CaiJingLong]
+
+  - name: fluttercandies/dart_image_size_getter
+    notify_users: [CaiJingLong]
+
+  - name: fluttercandies/svgo
+    notify_users: [iota9star]
+
+  - name: fluttercandies/flutter_get_native_icon
+    notify_users: [ahyangnb]
+
+  - name: fluttercandies/file_download_cache_manager
+    notify_users: [ahyangnb]
+
+  - name: fluttercandies/period_date_flutter
+    notify_users: [ahyangnb]
+
+  - name: fluttercandies/yapi_api
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/pull_to_refresh_notification
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/resx
+    notify_users: [iota9star]
+
+  - name: fluttercandies/json_dart
+    notify_users: [iota9star]
+
+  - name: fluttercandies/fconsole
+    notify_users: [mjl0602]
+
+  - name: fluttercandies/flutter_switch_clipper
+    notify_users: [xSILENCEx]
+
+  - name: fluttercandies/flutter-interactive-chart
+    notify_users: [h65wang]
+
   - name: fluttercandies/flutter_packages_get
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_text
-  - name: fluttercandies/like_button
-  - name: fluttercandies/flutter_novel
-  - name: fluttercandies/extended_tabs
-  - name: fluttercandies/mvimg
-  - name: fluttercandies/loading_more_list
-  - name: fluttercandies/flex_grid
-  - name: fluttercandies/extra_hittest_area
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_text_library
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/like_button
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/flutter_novel
+    notify_users: [7-bit11]
+
+  - name: fluttercandies/extended_tabs
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/mvimg
+    notify_users: [CaiJingLong]
+
+  - name: fluttercandies/loading_more_list
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/loading_more_list_library
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/flex_grid
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/extra_hittest_area
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_sliver
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_nested_scroll_view
-  - name: fluttercandies/extended_list_library
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_list
+    notify_users: [zmtzawqlp]
+
+  - name: fluttercandies/extended_list_library
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/extended_keyboard
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/candies_analyzer_plugin
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/ff_native_screenshot
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/flutter_challenges
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/env2dart
+    notify_users: [iota9star, AlexV525]
+
   - name: fluttercandies/scan_barcode
+    notify_users: [CaiJingLong]
+
   - name: fluttercandies/left-scroll-actions
+    notify_users: [mjl0602]
+
   - name: fluttercandies/dart_wake_on_lan
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_image_editor
+    notify_users: [CaiJingLong, zmtzawqlp]
+
   - name: fluttercandies/motion_photos
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_candies
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/flutter_bdface_collect
+    notify_users: [CyJaySong]
+
   - name: fluttercandies/flutter_live_activities
+    notify_users: [xSILENCEx]
+
   - name: fluttercandies/stack_board
+    notify_users: [xSILENCEx]
+
   - name: fluttercandies/sync_scroll_library
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/properties
+    notify_users: [CaiJingLong]
+
   - name: fluttercandies/no-free-usage-action
+    notify_users: [AlexV525]
+
   - name: fluttercandies/nav_router
+    notify_users: [ahyangnb]
+
   - name: fluttercandies/ios_willpop_transition_theme
+    notify_users: [xSILENCEx]
+
   - name: fluttercandies/http_client_helper
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/harmony_os_version
+    notify_users: [zhangruiyu]
+
   - name: fluttercandies/flutter_slider_view
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_qweather
+    notify_users: [CyJaySong]
+
   - name: fluttercandies/flutter_learning_tests
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_juejin
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_clean
+    notify_users: [zmtzawqlp]
+
   - name: fluttercandies/flutter_bindings_compatible
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_asset_generator
+    notify_users: [CaiJingLong, AlexV525]
+
   - name: fluttercandies/flutter_app_build_tool
+    notify_users: [AlexV525]
+
   - name: fluttercandies/flutter_ali_auth
+    notify_users: [ManInTheWind]
+
   - name: fluttercandies/dext
+    notify_users: [CaiJingLong]
+
   - name: fluttercandies/dash_painter
+    notify_users: [toly1994328]
+
   - name: fluttercandies/coordtransform
+    notify_users: [CyJaySong]
+
   - name: fluttercandies/baidupan
+    notify_users: [CaiJingLong]
+
   - name: fluttercandies/adaptation
+    notify_users: [CaiJingLong]
+
   - name: fluttercandies/flutter_interactional_widget
+    notify_users: [Nayuta403]
