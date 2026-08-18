@@ -327,3 +327,6 @@ repositories:
 
   - name: fluttercandies/flutter_interactional_widget
     assignees: [Nayuta403]
+  
+  - name: fluttercandies/seeko
+    assignees: [iota9star]
