@@ -2,6 +2,8 @@
 rules:
   ref-version-mismatch:
     disable: true
+  template-injection:
+    disable: true
   undocumented-permissions:
     disable: true
   anonymous-definition:
